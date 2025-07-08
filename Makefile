@@ -4,4 +4,4 @@ CFLAGS = -I$(SDK_PATH)/include -Wall
 LDFLAGS = -L$(SDK_PATH)/lib -lmpi -ldnvqe
 
 all:
-    $(CC) main.c -o app $(CFLAGS) $(LDFLAGS)
+	$(CC) main.c -o app $(CFLAGS) $(LDFLAGS)
