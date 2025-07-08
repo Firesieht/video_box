@@ -3,7 +3,7 @@ CC = arm-hisiv100nptl-linux-gcc
 SDK_PATH = /Hi3520D_SDK_V1.0.2.2
 CFLAGS = -I$(SDK_PATH)/mpp/include -Wall
 LDFLAGS = -L$(SDK_PATH)/mpp/lib -lmpi -ldnvqe
-
+CFLAGS += -I$(SDK_PATH)/osdrv/kernel/linux-3.0.y/include
 # Новые дополнения из новой версии:
 # Определяем дополнительный путь к библиотекам
 REL_LIB = $(SDK_PATH)/mpp/lib
