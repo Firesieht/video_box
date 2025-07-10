@@ -7,6 +7,7 @@ CFLAGS += -I$(SDK_PATH)/osdrv/kernel/linux-3.0.y/include
 # Новые дополнения из новой версии:
 # Определяем дополнительный путь к библиотекам
 REL_LIB = $(SDK_PATH)/mpp/lib
+KERNELDIR := $(SDK_PATH)/osdrv/kernel/linux-3.0.y
 
 # Дополнительные библиотеки (при условии, что они лежат по указанным путям)
 MPI_LIBS := $(REL_LIB)/libmpi.a $(REL_LIB)/libhdmi.a
@@ -26,7 +27,10 @@ TARGET := app
 .PHONY: all clean cleanstream
 
 # Основное правило сборки
-all: $(TARGET)
+all: 
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) CROSS_COMPILE=$(CROSS_COMPILE) modules
+	$(TARGET)
+
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lpthread -lm $(MPI_LIBS) $(AUDIO_LIBA) $(JPEGD_LIBA)
